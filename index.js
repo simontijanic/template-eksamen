@@ -5,7 +5,10 @@ const express = require('express');
 // IMPORT
 const database = require('./config/database');
 const authRoute = require('./routes/authRoute');
+const userRoute = require('./routes/userRoute');
+
 const sessionMiddleware = require('./middleware/session');
+const userMiddleware = require('./middleware/user');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -16,9 +19,11 @@ app.use(express.urlencoded({ extended: true })); // parse URL-kodede forespørse
 app.set('view engine', 'ejs');
 
 app.use(sessionMiddleware);
+app.use(userMiddleware);
 
 // ROUTES
-app.use(authRoute)
+app.use(authRoute);
+app.use(userRoute);
 
 // INITIALIZE
 const startServer = async () => {

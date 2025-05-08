@@ -10,5 +10,12 @@ exports.loginUser = async (req, res) => {
     if (!password || !email) { return res.status(400).json({message: 'Alle felt må fylles ut'}); }
 }
 exports.logoutUser = async (req, res) => {
-    
+
+}
+
+exports.getRegisterUser = async (req, res) => {
+    res.render("register")
+}
+exports.getLoginUser = async (req, res) => {
+    res.render("login")
 }
